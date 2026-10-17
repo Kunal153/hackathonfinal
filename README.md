@@ -135,5 +135,43 @@ git push -u origin main
 
 ---
 
+## 🚀 Deploying to Vercel
+
+EngiNotes is pre-configured for seamless deployment on **Vercel** with full client-side SPA routing and serverless backend API endpoints (`/api/gemini/solve`, `/api/gemini/summarize-pdf`).
+
+### Method 1: Deploy with Vercel Web Dashboard (Recommended)
+
+1. **Push your code to GitHub** (follow the steps above).
+2. Go to [vercel.com](https://vercel.com) and log in.
+3. Click **"Add New..."** > **"Project"**.
+4. Select your `enginotes` GitHub repository and click **Import**.
+5. Configure the project:
+   - **Framework Preset**: `Vite` (automatically detected)
+   - **Root Directory**: `./`
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `dist`
+6. Add Environment Variables:
+   - `GEMINI_API_KEY`: *(Optional, for live Google Gemini AI capabilities)*
+7. Click **Deploy**!
+
+### Method 2: Deploy with Vercel CLI
+
+```bash
+# 1. Install or run Vercel CLI
+npx vercel
+
+# 2. Follow interactive prompts to link project
+# 3. For production deployment:
+npx vercel --prod
+```
+
+### Serverless API & SPA Fallback Configuration
+The included [vercel.json](file:///c:/hackathonfinal/vercel.json) automatically routes:
+- `/api/*` to the dedicated Vercel Serverless Functions in `api/`
+- All other web application routes to `/index.html` (for seamless React SPA routing)
+
+---
+
 ## 🛡️ License
 Distributed under the Apache-2.0 License.
+
